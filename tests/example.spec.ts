@@ -29,8 +29,8 @@ test('vuelo Clic MDE ', async ({ page }) => {
   await sugestionwindows.filter({ hasText: destino }).click()
   //await page.waitForTimeout(5000)
 
-  await getCalendarDate(departureDate).click();
-  await getCalendarDate(arrivalDate)
+  await getCalendarDate(departureDate).click()
+  await getCalendarDate(arrivalDate).click()
 
 
 
