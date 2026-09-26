@@ -48,6 +48,17 @@ export default defineConfig({
       use: { 
         browserName: 'chromium', // En lugar de usar ...devices
         viewport: null,
+        launchOptions: {
+          args: [
+            '--disable-blink-features=AutomationControlled', // Elimina la bandera principal de automatización
+            '--start-maximized',                            // Inicia la ventana maximizada
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+          ],
+        },
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        locale: 'es-ES',
+        timezoneId: 'America/Bogota',
       },
     },
     
