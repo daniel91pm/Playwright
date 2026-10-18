@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: './src/tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,7 +24,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html'], // Mantiene tu reporte de Playwright actual
-    ['allure-playwright', { outputFolder: 'allure-results' }] 
+    ['allure-playwright', { outputFolder: 'allure-results', cleanResults: true }] 
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -34,7 +34,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    headless: false,
+    headless: process.env.CI ? true : false,
     launchOptions: {
       args: ['--start-maximized'],
     },
@@ -50,8 +50,8 @@ export default defineConfig({
         viewport: null,
         launchOptions: {
           args: [
-            '--disable-blink-features=AutomationControlled', // Elimina la bandera principal de automatización
-            '--start-maximized',                            // Inicia la ventana maximizada
+            '--disable-blink-features=AutomationControlled', 
+            '--start-maximized',                            
             '--no-sandbox',
             '--disable-setuid-sandbox'
           ],
