@@ -1,4 +1,4 @@
-/*import { test } from '@playwright/test';
+import { test } from '@playwright/test';
 import { BookingPage } from '../pages/BookingPage';
 import { FlightSelectionPage } from '../pages/FlightSelectionPage';
 import { DateUtils } from '../utils/DateUtils';
@@ -27,4 +27,4 @@ test('Reserva de vuelo Clic MDE -> BOG', async ({ page }) => {
   
   await flightSelectionPage.selectFirstAvailableFlight();
   await flightSelectionPage.acceptTermsAndContinue();
-});*/
+});
